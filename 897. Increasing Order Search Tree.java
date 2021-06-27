@@ -37,3 +37,30 @@ class Solution {
 
     }
 }
+
+--------------------------ANS:-APPROACH 2 :----------------------------------
+USING ONLY RECURSION
+Explanation:- 1. firstly create a node ans which would be the node of the new BST.
+              2. now create a dummy node result
+              3. now make fucnction helper which would containa simple inorder traversal and store the value in the ans node.
+
+
+class Solution {
+TreeNode ans;
+public TreeNode increasingBST4(TreeNode root) {
+    TreeNode result = new TreeNode(0);
+    ans = result;
+    helper(root);
+    return result.right;
+}
+
+public void helper(TreeNode root) {
+    if (root == null) {
+        return ;
+    }
+    helper(root.left);
+    ans.right = new TreeNode(root.val);
+    ans = ans.right;
+    helper(root.right);
+}
+}
